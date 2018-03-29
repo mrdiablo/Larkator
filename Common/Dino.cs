@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Larkator.Common
 {
@@ -12,6 +13,7 @@ namespace Larkator.Common
         public bool Female { get; set; }
         public Position Location { get; set; }
         public StatPoints WildLevels { get; set; }
+        public ColorSetIndices ColorSetIndices { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -42,5 +44,21 @@ namespace Larkator.Common
             hashCode = hashCode * -1521134295 + EqualityComparer<StatPoints>.Default.GetHashCode(WildLevels);
             return hashCode;
         }
+    }
+
+    public class ColorSetIndices
+    {
+        [JsonProperty("0")]
+        public int? Color0 { get; set; }
+        [JsonProperty("1")]
+        public int? Color1 { get; set; }
+        [JsonProperty("2")]
+        public int? Color2 { get; set; }
+        [JsonProperty("3")]
+        public int? Color3 { get; set; }
+        [JsonProperty("4")]
+        public int? Color4 { get; set; }
+        [JsonProperty("5")]
+        public int? Color5 { get; set; }
     }
 }

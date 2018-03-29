@@ -29,6 +29,7 @@
         <local:GenderToImageConverter x:Key="GenderToImageConverter"/>
         <local:GenderToLetterConverter x:Key="GenderToLetterConverter"/>
         <local:AddIntConverter x:Key="AddIntConverter"/>
+        <local:ArkColorConverter x:Key="ArkColorConverter" />
 
         <CollectionViewSource x:Key="GroupedSearchCriteria" Source="{Binding ListSearches}">
             <CollectionViewSource.GroupDescriptions>
@@ -318,7 +319,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4">
                                 <TextBlock Text="Max"/>
-                                <TextBlock Text="{Binding MinLevel, ConverterParameter=-, Converter={StaticResource OptionalIntConverter}}" MinWidth="64" MouseWheel="AdjustableInteger_MouseWheel"/>
+                                <TextBlock Text="{Binding MaxLevel, ConverterParameter=-, Converter={StaticResource OptionalIntConverter}}" MinWidth="64" MouseWheel="AdjustableInteger_MouseWheel"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button Width="32" FontFamily="Arial Black" FontSize="28" FontWeight="Bold" Padding="-4" Margin="4,0" Content="+" Click="SaveSearch_Click" />
@@ -345,7 +346,7 @@
                 </Grid>
             </Viewbox>
 
-            <Grid x:Name="rightPanel" Grid.Column="2" Width="360" MinHeight="200" Background="{DynamicResource WindowBackgroundBrush}">
+            <Grid x:Name="rightPanel" Grid.Column="2" Width="460" MinHeight="200" Background="{DynamicResource WindowBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -377,6 +378,48 @@
                         <DataGridTextColumn Header="We" Width="1*" Binding="{Binding Path=Dino.WildLevels.Weight}"/>
                         <DataGridTextColumn Header="Me" Width="1*" Binding="{Binding Path=Dino.WildLevels.Melee}"/>
                         <DataGridTextColumn Header="Sp" Width="1*" Binding="{Binding Path=Dino.WildLevels.Speed}"/>
+                        <DataGridTextColumn Header="C1" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color0, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="C2" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color1, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="C3" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color2, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="C4" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color3, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="C5" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color5, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="C6" Width="0.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Path=Dino.ColorSetIndices.Color6, Converter={StaticResource ArkColorConverter}}" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 
